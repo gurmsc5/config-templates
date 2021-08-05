@@ -1,0 +1,61 @@
+[core]
+	autocrlf = false
+	pager = less -FXRS
+[user]
+	email = user@email.com 
+	name = UserName
+
+[fetch]
+	prune = true
+
+[color]
+	ui = auto
+	branch = auto
+	status = auto
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[branch]
+	autosetuprebase = always
+
+[diff]
+	trustExitCode = false
+	tool = gitk
+
+[difftool]
+	prompt = false
+
+[alias]
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
+	amend = commit --amend
+	br = branch
+	brl = branch -lr
+	ci = commit
+	cc = checkout --cached
+	co = checkout
+	df = diff
+	ds = diff --staged
+	diffstash = diff stash@{0}^ stash@{0}
+	diffstashnames = diff --name-only stash@{0}^ stash@{0}
+	diffnames = diff --name-only
+	finish-undo = commit -c ORIG_HEAD
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	remove = rm
+	st = status
+	stb = status -s -b
+	tc = difftool --cached
+	tk = difftool
+	ts = difftool --staged
+	unadd = reset HEAD
+	undo-commit = reset --soft HEAD~1
+	update = !git stash save && git pull && git stash pop
+	when = !stat -c %y .git/FETCH_HEAD
+
+[merge]
+	tool = tkdiff
+[push]
+	#default = upstream
